@@ -1,0 +1,2 @@
+# KnapsackCombination
+A simple knapsacksolver
