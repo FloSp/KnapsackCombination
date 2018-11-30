@@ -43,5 +43,35 @@ namespace Combination
         {
             return left.Value / right.Value;
         }
+
+        public static bool operator <=(Length left, Length right)
+        {
+            return left.Value <= right.Value;
+        }
+
+        public static bool operator >=(Length left, Length right)
+        {
+            return left.Value >= right.Value;
+        }
+
+        public static bool operator <(Length left, Length right)
+        {
+            return left.Value < right.Value;
+        }
+
+        public static bool operator >(Length left, Length right)
+        {
+            return left.Value >= right.Value;
+        }
+
+        public static bool operator ==(Length left, Length right)
+        {
+            return left >= right && left <= right;
+        }
+
+        public static bool operator !=(Length left, Length right)
+        {
+            return !(left == right);
+        }
     }
 }
