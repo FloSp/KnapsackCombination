@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace Combination
 {
-    public class Length : IComparable
+    public class Length : IComparable<Length>
     {
         public BigInteger Value { get; }
 
@@ -95,15 +95,26 @@ namespace Combination
             return !(left == right);
         }
 
-        public int CompareTo(object obj)
+        public int CompareTo(Length otherLength)
+        {
+                return this.Value.CompareTo(otherLength.Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Value.GetHashCode();
+        }
+
+
+        public override bool Equals(object obj)
         {
             if (obj is Length otherLength)
             {
-                return this.Value.CompareTo(otherLength.Value);
+                return otherLength == this;
             }
-            throw new ArgumentException(nameof(obj));
-        }
 
+            return false;
+        }
         public override string ToString()
         {
             return this.Value.ToString();

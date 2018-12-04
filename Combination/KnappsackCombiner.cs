@@ -37,13 +37,13 @@ namespace Combination
                         continue;
                     }
 
-                    if( item.Key == 0 && itemLength >= currentLength)
+                    if(item.Key == 0 && itemLength <= currentLength)
                     {
                         values[(item.Key, currentLength)] =  itemValue;
                         continue;
                     }
 
-                    if (itemLength >= currentLength)
+                    if(itemLength <= currentLength)
                     {
                         values[(item.Key, currentLength)] = Math.Max(getItemValue(item.Value) + values[(item.Key - 1, currentLength - itemLength)], values[(item.Key - 1, currentLength)]);
                     }
@@ -52,32 +52,33 @@ namespace Combination
 
             };
 
-            return GetCombinationFromTable(initialCombination, values, sortedItems).ToSequence();
+            return GetCombinationFromTable(initialCombination, values, sortedItems, getItemLength).ToSequence();
         }
 
-        private static ICombination<T> GetCombinationFromTable<T>(ICombination<T> initialCombination, Dictionary<(int row, Length column), double> values, SortedList<int, T> items)
+        private static ICombination<T> GetCombinationFromTable<T>(ICombination<T> initialCombination, Dictionary<(int row, Length column), double> values, SortedList<int, T> items, Func<T, Length> getItemLength)
         {
-            var currentRow = values.Keys.Select(tuple => tuple.row).Max();
             var currentColumn = values.Keys.Select(tuple => tuple.column).Max();
 
-
-            if (IsItemInKnapsack())
+            for (int currentRow = values.Keys.Select(tuple => tuple.row).Max(); currentRow >= 0; currentRow--)
             {
-                initialCombination=initialCombination.Add(items[currentRow], 1);
-            }
-
-            return initialCombination;
-
-            bool IsItemInKnapsack()
-            {
-                if(currentRow == 0)
+                if (IsItemInKnapsack(currentRow ,currentColumn,values))
                 {
-                    return values[(currentRow, currentColumn)] > 0;
+                    initialCombination = initialCombination.Add(items[currentRow], 1);
+                    currentColumn -= getItemLength(items[currentRow]);
                 }
 
-                return values[(currentRow, currentColumn)] > values[(currentRow - 1, currentColumn)];
-            }            
+            }
+            return initialCombination;
+        }
 
+        private static bool IsItemInKnapsack(int currentRow, Length currentColumn, Dictionary<(int row, Length column), double> values)
+        {
+            if (currentRow == 0)
+            {
+                return values[(currentRow, currentColumn)] > 0;
+            }
+
+            return values[(currentRow, currentColumn)] > values[(currentRow - 1, currentColumn)];
         }
     }
 }
