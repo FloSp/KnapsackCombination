@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\LengthExtensions.cs" />
     <Compile Include="ICombination.cs" />
     <Compile Include="KnappsackCombiner.cs" />
     <Compile Include="Length.cs" />
@@ -52,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Framework\Framework.csproj">
+      <Project>{d82044ac-44a8-46df-a03f-ecddb3c21e22}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

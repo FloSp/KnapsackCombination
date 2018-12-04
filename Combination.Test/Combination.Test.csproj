@@ -54,10 +54,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Framework\Item.cs" />
+    <Compile Include="Framework\ItemCombination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Combination\Combination.csproj">
+      <Project>{7bf335f7-fade-4edf-b0bd-c40356c9606f}</Project>
+      <Name>Combination</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Combination\Framework\Framework.csproj">
+      <Project>{d82044ac-44a8-46df-a03f-ecddb3c21e22}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
