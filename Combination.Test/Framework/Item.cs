@@ -13,10 +13,11 @@ namespace Combination.Test.Framework
         /// </summary>
         /// <param name="value">Value</param>
         /// <param name="weight">Weigth</param>
-        public Item(int value, int weight)
+        public Item(int value, int weight, int maxCount = 1)
         {
             this.Value = value;
             this.Weight = weight;
+            this.MaxCount = maxCount;
         }
 
         /// <summary>
@@ -28,6 +29,9 @@ namespace Combination.Test.Framework
         /// Gets Weigth of a item.
         /// </summary>
         public int Weight { get; }
+
+
+        public int MaxCount { get; }
 
         /// <summary>
         /// Deconstruct.

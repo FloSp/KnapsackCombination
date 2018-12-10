@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Combination.Test
 {
     [TestClass]
-    public class Class1
+    public class KnappsackCombinerTest
     {
         [TestMethod]
         public void testme()
@@ -19,8 +19,10 @@ namespace Combination.Test
             var combini = ItemCombination.Empty();
             var item1 = new Item(1, 2);
             Length totalLength = 3;
+            var itemMethods = new ItemUtilsProvider();
+            
 
-           var rest= KnappsackCombiner.CompleteCombination(combini, item1.ToSequence(3), x => 1, x => 2, x => 1, totalLength, x => true);
+           var rest= KnappsackCombiner.CompleteCombination(combini, item1.ToSequence(2), itemMethods, totalLength);
             Assert.IsFalse(false);
         }
     }

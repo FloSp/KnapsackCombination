@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Extensions\LengthExtensions.cs" />
     <Compile Include="ICombination.cs" />
+    <Compile Include="ItemUtils.cs" />
     <Compile Include="KnappsackCombiner.cs" />
     <Compile Include="Length.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -56,7 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Framework\ItemUtilsProvider.cs" />
+    <Compile Include="KnappsackCombinerTest.cs" />
     <Compile Include="Framework\Item.cs" />
     <Compile Include="Framework\ItemCombination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
